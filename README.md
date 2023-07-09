@@ -7,6 +7,9 @@ React Native
 1. Page setup react native: https://reactnative.dev/docs/environment-setup
 2. Page setup expo: https://docs.expo.dev/workflow/customizing/
 3. Expo LinearGradient: https://docs.expo.dev/versions/latest/sdk/linear-gradient/
+4. Expo vector icon: https://docs.expo.dev/guides/icons/
+5. Expo font: https://docs.expo.dev/versions/latest/sdk/font/
+6. Expo Loading: https://docs.expo.dev/versions/v46.0.0/sdk/app-loading/
 
 # Basic React
 
@@ -29,6 +32,18 @@ Run react devtool
 
 ```c
 react-devtools
+```
+
+Install font to expo
+
+```c
+expo install expo-font
+```
+
+Install loading
+
+```c
+expo install expo-app-loading
 ```
 
 # Tags in react native

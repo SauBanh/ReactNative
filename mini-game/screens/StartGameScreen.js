@@ -1,24 +1,65 @@
-import { TextInput, View, StyleSheet } from "react-native";
-import PrimaryButton from "../components/PrimaryButton";
+import { useState } from "react";
+import { TextInput, View, StyleSheet, Alert } from "react-native";
 
-function StartGameScreen() {
+import Colors from "../constants/colors";
+import Title from "../components/ui/Title";
+import PrimaryButton from "../components/ui/PrimaryButton";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
+
+function StartGameScreen({ onPickNumber }) {
+    const [enteredNumber, setEnteredNumber] = useState("");
+
+    function numberInputHandler(enteredText) {
+        setEnteredNumber(enteredText);
+    }
+
+    function resetInputHandler() {
+        setEnteredNumber("");
+    }
+
+    function confirmInputHandler() {
+        const chosenNumber = parseInt(enteredNumber); // chuyển đổi dạng string thành số
+        if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+            Alert.alert("Invalid number!", "Number must be between 0 and 99", [
+                {
+                    text: "Okei",
+                    style: "destructive",
+                    onPress: resetInputHandler,
+                },
+            ]);
+            return;
+        }
+        onPickNumber(chosenNumber);
+    }
+
     return (
-        <View style={styles.inputContainer}>
-            <TextInput
-                style={styles.numberInput}
-                maxLength={2}
-                keyboardType="number-pad"
-                autoCapitalize="none" // tắt chế độ tự động chỉnh chữ viết hoa trên điện thoại
-                autoCorrect={false} // tắt chế độ tự động chỉnh sửa chữ trên mobile
-            />
-            <View style={styles.buttonsContainer}>
-                <View style={styles.buttonContainer}>
-                    <PrimaryButton>Rest</PrimaryButton>
+        <View style={styles.rootContainer}>
+            <Title>Guess My Number</Title>
+            <Card>
+                <InstructionText>Enter a Number</InstructionText>
+                <TextInput
+                    style={styles.numberInput}
+                    maxLength={2}
+                    keyboardType="number-pad"
+                    autoCapitalize="none" // tắt chế độ tự động chỉnh chữ viết hoa trên điện thoại
+                    autoCorrect={false} // tắt chế độ tự động chỉnh sửa chữ trên mobile
+                    value={enteredNumber}
+                    onChangeText={numberInputHandler}
+                />
+                <View style={styles.buttonsContainer}>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={resetInputHandler}>
+                            Rest
+                        </PrimaryButton>
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={confirmInputHandler}>
+                            Confirm
+                        </PrimaryButton>
+                    </View>
                 </View>
-                <View style={styles.buttonContainer}>
-                    <PrimaryButton>Confirm</PrimaryButton>
-                </View>
-            </View>
+            </Card>
         </View>
     );
 }
@@ -26,28 +67,18 @@ function StartGameScreen() {
 export default StartGameScreen;
 
 const styles = StyleSheet.create({
-    inputContainer: {
-        justifyContent: "center",
-        alignItems: "center",
+    rootContainer: {
+        flex: 1,
         marginTop: 100,
-        marginHorizontal: 24,
-        padding: 16,
-        backgroundColor: "#3b021f",
-        color: "#fff",
-        borderRadius: 8,
-        elevation: 8, // hiệu ứng bóng trên android và không hoạt động trên ios để hoạt động trên ios làm bước dưới
-        shadowColor: "black", // thêm bóng đổ vào ios
-        shadowOffset: { width: 0, height: 2 }, // thêm bóng đổ vào ios
-        shadowRadius: 6, // thêm bóng đổ vào ios
-        shadowOpacity: 0.25, // thêm bóng đổ vào ios
+        alignItems: "center",
     },
     numberInput: {
         height: 50,
         width: 50,
         fontSize: 32,
-        borderBottomColor: "#ddb52f",
+        borderBottomColor: Colors.accent500,
         borderBottomWidth: 2,
-        color: "#ddb52f",
+        color: Colors.accent500,
         marginVertical: 8,
         fontWeight: "bold",
         textAlign: "center",
