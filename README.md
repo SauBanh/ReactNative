@@ -6,6 +6,7 @@ React Native
 
 1. Page setup react native: https://reactnative.dev/docs/environment-setup
 2. Page setup expo: https://docs.expo.dev/workflow/customizing/
+3. Expo LinearGradient: https://docs.expo.dev/versions/latest/sdk/linear-gradient/
 
 # Basic React
 
