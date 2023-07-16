@@ -10,6 +10,7 @@ React Native
 4. Expo vector icon: https://docs.expo.dev/guides/icons/
 5. Expo font: https://docs.expo.dev/versions/latest/sdk/font/
 6. Expo Loading: https://docs.expo.dev/versions/v46.0.0/sdk/app-loading/
+7. React navigation: https://reactnavigation.org/docs/getting-started
 
 # Basic React
 
@@ -45,6 +46,34 @@ Install loading
 ```c
 expo install expo-app-loading
 ```
+
+Install LinearGradient
+
+```c
+npx expo install expo-linear-gradient
+```
+
+install react-native
+
+```c
+npm install @react-navigation/native
+```
+
+Installing dependencies into an Expo managed project
+
+```c
+npx expo install react-native-screens react-native-safe-area-context
+```
+
+Native Stack Navigator
+
+```c
+npm install @react-navigation/native-stack
+```
+
+screen rotation installation guide
+
+1. app.json -> "orientation": "portrait", change to "orientation": "default"
 
 # Tags in react native
 
