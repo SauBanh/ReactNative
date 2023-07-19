@@ -11,6 +11,8 @@ React Native
 5. Expo font: https://docs.expo.dev/versions/latest/sdk/font/
 6. Expo Loading: https://docs.expo.dev/versions/v46.0.0/sdk/app-loading/
 7. React navigation: https://reactnavigation.org/docs/getting-started
+8. React navigation drawer: https://reactnavigation.org/docs/drawer-navigator
+9. Redux Toolkit: https://redux-toolkit.js.org/
 
 # Basic React
 
@@ -20,6 +22,12 @@ Create and run react native
 npx create-expo-app AwesomeProject
 cd AwesomeProject
 npx expo start
+```
+
+reset delete bộ nhớ đệm
+
+```c
+expo r -c
 ```
 
 To debug React-Native use react devtool
@@ -69,6 +77,32 @@ Native Stack Navigator
 
 ```c
 npm install @react-navigation/native-stack
+```
+
+React navigation drawer
+
+```c
+npm install @react-navigation/drawer
+npx expo install react-native-gesture-handler react-native-reanimated
+npm install react-native-reanimated --save --save-exact
+```
+
+to use drawer change file babel.config.js. Add plugins: ["react-native-reanimated/plugin"],
+
+```c
+module.exports = function (api) {
+    api.cache(true);
+    return {
+        presets: ["babel-preset-expo"],
+        plugins: ["react-native-reanimated/plugin"],
+    };
+};
+```
+
+Bottom Tabs Navigator
+
+```c
+npm install @react-navigation/bottom-tabs
 ```
 
 screen rotation installation guide
